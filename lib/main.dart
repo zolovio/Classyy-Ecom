@@ -5,7 +5,9 @@ import 'package:lucky_draw_app/data/values/my_colors.dart';
 import 'package:lucky_draw_app/data/values/styles.dart';
 import 'package:lucky_draw_app/ui/screens/drawer/drawer.dart';
 import 'package:lucky_draw_app/ui/screens/home/home_screen.dart';
+import 'package:lucky_draw_app/ui/screens/my_cart/my_cart.dart';
 import 'package:lucky_draw_app/ui/screens/profile/my_profile.dart';
+import 'package:lucky_draw_app/ui/screens/profile/personal_detail.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +26,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         primaryColor: Styles.appTheme.primaryColor,
       ),
-      home:  MyProfileScreen(),
+      home:  MyCartScreen(),
     );
   }
 }
@@ -52,7 +54,7 @@ class _ZoomState extends State<Zoom> {
       mainScreenScale: 0.4,
       menuBackgroundColor: MyColors.grey,
       mainScreen:  Body(),
-      menuScreen: DrawerScreen(),
+      menuScreen: drawerScreen(context),
     );
   }
 }

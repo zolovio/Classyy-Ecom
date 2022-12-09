@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lucky_draw_app/data/values/values.dart';
 
+import '../../../data/controllers/drawer_controller.dart';
 import '../../../main.dart';
 
-class DrawerScreen extends StatelessWidget {
-  const DrawerScreen({Key? key}) : super(key: key);
+// class DrawerScreen extends StatelessWidget {
+//   const DrawerScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget drawerScreen(BuildContext context) {
+    DrawerControl drawerController=Get.put(DrawerControl());
     return Theme(
       data: ThemeData.dark(),
       child: SafeArea(
@@ -50,7 +53,8 @@ class DrawerScreen extends StatelessWidget {
                             MaterialButton(
                               elevation: 0.2,
                               onPressed: () {
-                                z.close!();
+                                drawerController.closeDrawer();
+                                //z.close!();
                               },
                               color: Colors.orangeAccent.withOpacity(0.8),
                               textColor: Colors.white,
@@ -137,4 +141,4 @@ class DrawerScreen extends StatelessWidget {
       ),
     );
   }
-}
+
