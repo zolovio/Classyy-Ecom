@@ -6,6 +6,7 @@ import 'package:lucky_draw_app/data/values/styles.dart';
 import 'package:lucky_draw_app/ui/screens/drawer/drawer.dart';
 import 'package:lucky_draw_app/ui/screens/home/home_screen.dart';
 import 'package:lucky_draw_app/ui/screens/my_cart/my_cart.dart';
+import 'package:lucky_draw_app/ui/screens/product_detail/product_detail_screen.dart';
 import 'package:lucky_draw_app/ui/screens/profile/my_profile.dart';
 import 'package:lucky_draw_app/ui/screens/profile/personal_detail.dart';
 
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         primaryColor: Styles.appTheme.primaryColor,
       ),
-      home:  MyCartScreen(),
+      home:  ProductDetailScreen(),
     );
   }
 }
