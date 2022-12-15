@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lucky_draw_app/data/values/values.dart';
+import 'package:lucky_draw_app/ui/screens/auth/login_screen.dart';
+import 'package:lucky_draw_app/ui/screens/my_cart/my_cart.dart';
+import 'package:lucky_draw_app/ui/screens/notification_screen/notification_screen.dart';
+import 'package:lucky_draw_app/ui/screens/profile/my_profile.dart';
+import 'package:lucky_draw_app/ui/screens/winner_screen/winner_screen.dart';
 
 import '../../../data/controllers/drawer_controller.dart';
 import '../../../main.dart';
+import '../my_cart/cart_screen.dart';
 
 // class DrawerScreen extends StatelessWidget {
 //   const DrawerScreen({Key? key}) : super(key: key);
@@ -53,7 +59,8 @@ import '../../../main.dart';
                             MaterialButton(
                               elevation: 0.2,
                               onPressed: () {
-                                drawerController.closeDrawer();
+                                Get.back();
+                               // drawerController.closeDrawer();
                                 //z.close!();
                               },
                               color: Colors.orangeAccent.withOpacity(0.8),
@@ -75,34 +82,54 @@ import '../../../main.dart';
                           // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                'Settings',
-                                style: Styles.appTheme.textTheme.headline4
-                                    ?.copyWith(color: Colors.white),
+                              GestureDetector(
+                                onTap: (){
+                                  Get.to(const MyProfileScreen());
+                                },
+                                child: Text(
+                                  'Settings',
+                                  style: Styles.appTheme.textTheme.headline4
+                                      ?.copyWith(color: Colors.white),
+                                ),
                               ),
                               const SizedBox(
                                 height: 20,
                               ),
-                              Text(
-                                'Notifications',
-                                style: Styles.appTheme.textTheme.headline4
-                                    ?.copyWith(color: Colors.white),
+                              GestureDetector(
+                                onTap: (){
+                                  Get.to(const NotificationScreen());
+                                },
+                                child: Text(
+                                  'Notifications',
+                                  style: Styles.appTheme.textTheme.headline4
+                                      ?.copyWith(color: Colors.white),
+                                ),
                               ),
                               const SizedBox(
                                 height: 20,
                               ),
-                              Text(
-                                'My Cart',
-                                style: Styles.appTheme.textTheme.headline4
-                                    ?.copyWith(color: Colors.white),
+                              GestureDetector(
+                                onTap: (){
+                                  Get.to( CartScreen());
+                                },
+                                child: Text(
+                                  'My Cart',
+                                  style: Styles.appTheme.textTheme.headline4
+                                      ?.copyWith(color: Colors.white),
+                                ),
                               ),
                               const SizedBox(
                                 height: 20,
                               ),
-                              Text(
-                                'Winner',
-                                style: Styles.appTheme.textTheme.headline4
-                                    ?.copyWith(color: Colors.white),
+                              GestureDetector(
+                                onTap: (){
+                                  Get.to(const WinnerScreen());
+                                },
+                                child: Text(
+                                  'Winner',
+                                  style: Styles.appTheme.textTheme.headline4
+                                      ?.copyWith(color: Colors.white),
+                                ),
                               ),
                             ]),
                       ],
@@ -120,7 +147,9 @@ import '../../../main.dart';
                                 borderRadius: BorderRadius.circular(30), // <-- Radius
                               ),
                             ),
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.to(const LoginScreen());
+                            },
                             child: Text(
                               "Log out",
                               style: Theme.of(context)

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:lucky_draw_app/ui/screens/drawer/drawer.dart';
 
 import '../../../data/values/my_colors.dart';
 import '../../../data/values/my_imgs.dart';
@@ -17,22 +19,38 @@ class _WinnerScreenState extends State<WinnerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.backGroundColor,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: MyColors.backGroundColor,
+        leading:  GestureDetector(
+            onTap: ()=>Get.to(drawerScreen(context)),
+            child: Image.asset('assets/images/drawerIcon.png')),
+        title: Text("Winner", style: TextStyle(
+            fontFamily: "Montserrat",
+            fontSize: 20.sp,
+            fontWeight: FontWeight.w700,
+            color: Colors.black
+        )),
+        centerTitle: true,
+      ),
       body: ScreenUtilInit(builder: (BuildContext context, Widget? child){
         return SafeArea(
           child: Column(
             children: [
-              appBar(),
-              Container(
-                height: MediaQuery.of(context).size.height * 0.9,
-                child: ListView.builder(
-                    scrollDirection: Axis.vertical,
-                    itemCount: 5,
-                    itemBuilder: (context, index){
-                      return Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: offerItem(),
-                      );
-                    }),
+              // appBar(context),
+              Expanded(
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.9,
+                  child: ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      itemCount: 5,
+                      itemBuilder: (context, index){
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: offerItem(),
+                        );
+                      }),
+                ),
               ),
             ],
           ),
@@ -221,41 +239,46 @@ class _WinnerScreenState extends State<WinnerScreen> {
     );
   }
 
-  Widget appBar(){
+  Widget appBar(BuildContext context){
     return Container(
       padding: EdgeInsets.only(top: 25.h),
       child: Stack(
         children: [
-          Positioned(
-            left: 20.h,
-            child: Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset(MyImgs.box2),
-                      SizedBox(
-                        width: 3.h,
-                      ),
-                      SvgPicture.asset(MyImgs.box1),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 3.h,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset(MyImgs.box1),
-                      SizedBox(
-                        width: 3.h,
-                      ),
-                      SvgPicture.asset(MyImgs.box2),
-                    ],
-                  ),
-                ],
+          GestureDetector(
+            onTap: (){
+              Get.to(()=>drawerScreen(context));
+            },
+            child: Positioned(
+              left: 20.h,
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(MyImgs.box2),
+                        SizedBox(
+                          width: 3.h,
+                        ),
+                        SvgPicture.asset(MyImgs.box1),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 3.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(MyImgs.box1),
+                        SizedBox(
+                          width: 3.h,
+                        ),
+                        SvgPicture.asset(MyImgs.box2),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

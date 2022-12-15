@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:lucky_draw_app/data/values/my_imgs.dart';
-
+import 'package:lucky_draw_app/ui/screens/product_detail/product_detail_screen.dart';
 import '../../../data/values/my_colors.dart';
+import '../drawer/drawer.dart';
 import 'home_banner.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -397,33 +399,38 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SvgPicture.asset(MyImgs.box2),
-                  SizedBox(
-                    width: 3.h,
-                  ),
-                  SvgPicture.asset(MyImgs.box1),
-                ],
-              ),
-              SizedBox(
-                height: 3.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SvgPicture.asset(MyImgs.box1),
-                  SizedBox(
-                    width: 3.h,
-                  ),
-                  SvgPicture.asset(MyImgs.box2),
-                ],
-              ),
-            ],
+          GestureDetector(
+            onTap: (){
+              Get.to(drawerScreen(context));
+            },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(MyImgs.box2),
+                    SizedBox(
+                      width: 3.h,
+                    ),
+                    SvgPicture.asset(MyImgs.box1),
+                  ],
+                ),
+                SizedBox(
+                  height: 3.h,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(MyImgs.box1),
+                    SizedBox(
+                      width: 3.h,
+                    ),
+                    SvgPicture.asset(MyImgs.box2),
+                  ],
+                ),
+              ],
+            ),
           ),
           Column(
             children: [
@@ -569,53 +576,58 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget offerItem(){
-    return Stack(
-      children: [
-        itemCard(),
-        Positioned(
-            bottom: 8.h,
-            right: 30.h,
-            child: Padding(
-              padding: const EdgeInsets.all(1),
-              child: Column(
-          children: [
-              Container(
-                  height: 72.h,
-                  width: 72.w,
-                  padding: EdgeInsets.all(8.h),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(8.h))
-                  ),
-                  child: Image.asset(MyImgs.capImage, height: 23.h,)),
-              SizedBox(height: 10.h,),
-              Container(
-                height: 29.h,
-                child: OutlinedButton(
-                    onPressed: () {},
-                    style: OutlinedButton.styleFrom(
-                        backgroundColor:
-                        Colors.white,
-                        side: BorderSide.none,
-                        shape: RoundedRectangleBorder(
-                            borderRadius:
-                            BorderRadius.all(
-                                Radius.circular(
-                                    100.h)))),
-                    child: Text("Add to cart",
-                        style: TextStyle(
-                            fontFamily:
-                            "Montserrat",
-                            color: Colors.black,
-                            fontSize: 15.sp,
-                            fontWeight: FontWeight
-                                .bold))),
-              )
+    return GestureDetector(
+      onTap: (){
+        Get.to(const ProductDetailScreen());
+      },
+      child: Stack(
+        children: [
+          itemCard(),
+          Positioned(
+              bottom: 8.h,
+              right: 30.h,
+              child: Padding(
+                padding: const EdgeInsets.all(1),
+                child: Column(
+            children: [
+                Container(
+                    height: 72.h,
+                    width: 72.w,
+                    padding: EdgeInsets.all(8.h),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(8.h))
+                    ),
+                    child: Image.asset(MyImgs.capImage, height: 23.h,)),
+                SizedBox(height: 10.h,),
+                Container(
+                  height: 29.h,
+                  child: OutlinedButton(
+                      onPressed: () {},
+                      style: OutlinedButton.styleFrom(
+                          backgroundColor:
+                          Colors.white,
+                          side: BorderSide.none,
+                          shape: RoundedRectangleBorder(
+                              borderRadius:
+                              BorderRadius.all(
+                                  Radius.circular(
+                                      100.h)))),
+                      child: Text("Add to cart",
+                          style: TextStyle(
+                              fontFamily:
+                              "Montserrat",
+                              color: Colors.black,
+                              fontSize: 15.sp,
+                              fontWeight: FontWeight
+                                  .bold))),
+                )
 
-          ],
-        ),
-            ))
-      ],
+            ],
+          ),
+              ))
+        ],
+      ),
     );
   }
 

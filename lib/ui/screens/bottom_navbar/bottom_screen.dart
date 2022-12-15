@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lucky_draw_app/data/values/my_imgs.dart';
 import 'package:lucky_draw_app/ui/screens/coupen_screen/coupon_screen.dart';
 import '../draws_screen/draws_screen.dart';
 import '../home_screen/home_screen.dart';
+import '../my_cart/my_cart.dart';
 import '../winner_screen/winner_screen.dart';
 
 class BottomScreen extends StatefulWidget {
@@ -44,7 +46,7 @@ class _BottomScreenState extends State<BottomScreen> {
   final screens = [
     const HomeScreen(),
     const WinnerScreen(),
-    const DrawsScreen(),
+     const DrawsScreen(),
     const CouponScreen()
   ];
 
@@ -116,6 +118,7 @@ class _BottomScreenState extends State<BottomScreen> {
 
                         print("selectedIndex: $selectedIndex");
                       });
+
                     },
                     defaultColor: secondaryColor,
                     selectedColor: two == true ? primaryColor : secondaryColor,
@@ -126,6 +129,7 @@ class _BottomScreenState extends State<BottomScreen> {
                       iconPath: MyImgs.drawsIcon,
                       selected: three,
                       onPressed: () {
+
                         setState(() {
                           selectedIndex = 2;
                           three = true;
@@ -134,6 +138,8 @@ class _BottomScreenState extends State<BottomScreen> {
                           four = false;
                           print("selectedIndex: $selectedIndex");
                         });
+
+
                       },
                       defaultColor: secondaryColor,
                       selectedColor: three == true ? primaryColor : secondaryColor),

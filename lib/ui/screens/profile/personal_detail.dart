@@ -1,5 +1,6 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lucky_draw_app/data/values/my_colors.dart';
 import '../../../data/values/styles.dart';
 
@@ -39,7 +40,9 @@ class _PersonalDetailState extends State<PersonalDetail> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Get.back();
+          },
           icon: const Icon(
             Icons.arrow_back_ios,
             color: Colors.black,

@@ -4,6 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:lucky_draw_app/data/values/my_colors.dart';
 import 'package:lucky_draw_app/data/values/my_imgs.dart';
+import 'package:lucky_draw_app/ui/screens/auth/forgot_password_screen.dart';
+import 'package:lucky_draw_app/ui/screens/auth/otp_screen.dart';
+import 'package:lucky_draw_app/ui/screens/auth/signup_screen.dart';
 
 import '../bottom_navbar/bottom_screen.dart';
 
@@ -81,7 +84,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       .size
                       .width,
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(ForgotPasswordScreen());
+                    },
                     child: Center(child: Text(
                         "Forgot Password?", style: TextStyle(
                         fontSize: 13.sp,
@@ -182,15 +187,19 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       SvgPicture.asset(height: 20.w, MyImgs.phone),
                       SizedBox(width: 5.w,),
-                      Text("Login with Phone", style: TextStyle(
-                          fontSize: 15.sp,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: "Montserrat",
-                          color: Colors.black
-                      ),)
+                      GestureDetector(
+
+                        child: Text("Login with Phone Number", style: TextStyle(
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: "Montserrat",
+                            color: Colors.black
+                        ),),
+                      )
                     ],
                   ),
-                ), SizedBox(height: 15.w,),
+                ),
+                SizedBox(height: 15.w,),
                 Container(
                   height: 50.h,
                   margin: EdgeInsets.only(left: 40.w, right: 40.w),
@@ -217,29 +226,35 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 SizedBox(height: 10.w,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("Didn't have an account ?", style: TextStyle(
-                        fontSize: 13.sp,
-                        fontFamily: "Montserrat",
-                        color: Colors.grey
-                    ),),
-                    SizedBox(width: 10.w,),
-                    Text("Sign-Up", style: TextStyle(
-                        fontSize: 13.sp,
-                        fontFamily: "Montserrat",
-                        fontWeight: FontWeight.bold,
-                        color: MyColors.primary
-                    ),)
-                  ],
+                GestureDetector(
+                  onTap: (){
+                    Get.to(SignUpScreen());
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Didn't have an account ?", style: TextStyle(
+                          fontSize: 13.sp,
+                          fontFamily: "Montserrat",
+                          color: Colors.grey
+                      ),),
+                      SizedBox(width: 10.w,),
+                      Text("Sign-Up", style: TextStyle(
+                          fontSize: 13.sp,
+                          fontFamily: "Montserrat",
+                          fontWeight: FontWeight.bold,
+                          color: MyColors.primary
+                      ),)
+                    ],
+                  ),
                 ),
                 SizedBox(height: 10.w,)
               ],
             ),
           )
       );
-    }) : ScreenUtilInit(builder: (BuildContext context, Widget? child) {
+    }) :
+    ScreenUtilInit(builder: (BuildContext context, Widget? child) {
       return SafeArea(
           child: Scaffold(
             backgroundColor: MyColors.backGroundColor,
@@ -291,7 +306,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         .size
                         .width,
                     child: GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Get.to(ForgotPasswordScreen());
+                      },
                       child: Center(child: Text(
                           "Forgot Password?", style: TextStyle(
                           fontSize: 13.sp,
@@ -376,29 +393,34 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                   ), SizedBox(height: 15.w,),
-                  Container(
-                    height: 50.h,
-                    margin: EdgeInsets.only(left: 40.w, right: 40.w),
-                    width: MediaQuery
-                        .of(context)
-                        .size
-                        .width,
-                    decoration: BoxDecoration(
-                        color: MyColors.socialButtonBG,
-                        borderRadius: BorderRadius.all(Radius.circular(15.w))
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SvgPicture.asset(height: 20.w, MyImgs.phone),
-                        SizedBox(width: 5.w,),
-                        Text("Login with Phone", style: TextStyle(
-                            fontSize: 15.sp,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "Montserrat",
-                            color: Colors.black
-                        ),)
-                      ],
+                  GestureDetector(
+                    onTap: () {
+                      Get.to(OTPScreen());
+                    },
+                    child: Container(
+                      height: 50.h,
+                      margin: EdgeInsets.only(left: 40.w, right: 40.w),
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width,
+                      decoration: BoxDecoration(
+                          color: MyColors.socialButtonBG,
+                          borderRadius: BorderRadius.all(Radius.circular(15.w))
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SvgPicture.asset(height: 20.w, MyImgs.phone),
+                          SizedBox(width: 5.w,),
+                          Text("Login with Phone", style: TextStyle(
+                              fontSize: 15.sp,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: "Montserrat",
+                              color: Colors.black
+                          ),)
+                        ],
+                      ),
                     ),
                   ), SizedBox(height: 15.w,),
                   Container(
@@ -436,12 +458,17 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Colors.grey
                       ),),
                       SizedBox(width: 10.w,),
-                      Text("Sign-Up", style: TextStyle(
-                          fontSize: 13.sp,
-                          fontFamily: "Montserrat",
-                          fontWeight: FontWeight.bold,
-                          color: MyColors.primary
-                      ),)
+                      GestureDetector(
+                        onTap: () {
+                          Get.to(SignUpScreen());
+                        },
+                        child: Text("Sign-Up", style: TextStyle(
+                            fontSize: 13.sp,
+                            fontFamily: "Montserrat",
+                            fontWeight: FontWeight.bold,
+                            color: MyColors.primary
+                        ),),
+                      )
                     ],
                   ),
                   SizedBox(height: 10.w,)

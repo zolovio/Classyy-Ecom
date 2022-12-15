@@ -21,7 +21,9 @@ class MyProfileScreen extends StatelessWidget {
                       sliver: SliverAppBar(
                        // pinned: true,
                         leading: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.back();
+                          },
                           icon: const Icon(Icons.arrow_back_ios),
                         ),
                         title: Text(
